@@ -1,25 +1,370 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blueprintly Nexus - التدريب الاحترافي</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Blueprintly - بوابة التدريب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2C3E50;
+            --secondary-blue: #3498DB;
+            --accent-orange: #E67E22;
+            --text-dark: #2C3E50;
+            --text-light: #666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-container {
+            background: rgba(255, 255, 255, 0.97);
+            width: 100%;
+            max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* القسم العلوي: اسم المنصة ومميزاتها */
+        .header-section {
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .branding {
+            margin-bottom: 1.5rem;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .features {
+            margin-top: 1.5rem;
+        }
+
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* قسم النماذج */
+        .forms-section {
+            padding: 2rem;
+            background: white;
+        }
+
+        .form-switcher {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+        }
+
+        .form-tab {
+            cursor: pointer;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .form-tab.active {
+            background: var(--secondary-blue);
+            color: white;
+        }
+
+        .auth-form {
+            transition: transform 0.4s ease;
+        }
+
+        .login-form { transform: translateX(0); }
+        .register-form { transform: translateX(100%); }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-align: right;
+        }
+
+        .form-input:focus {
+            border-color: var(--secondary-blue);
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.2);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+        }
+
+        .auth-btn {
+            background: var(--secondary-blue);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .auth-btn:hover {
+            background: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        .social-auth {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .social-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn.google { background: #DB4437; color: white; }
+        .social-btn.linkedin { background: #0A66C2; color: white; }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .auth-container {
+                flex-direction: column;
+            }
+            
+            .header-section {
+                padding: 1.5rem;
+            }
+            
+            .forms-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Blueprintly Nexus</h1>
-        <nav>
-            <a href="courses.html">الدورات</a>
-            <a href="blog.html">المدونة</a>
-            <a href="contact.html">تواصل معنا</a>
-            <a href="login.html">تسجيل الدخول</a>
-        </nav>
-    </header>
-    <section class="hero">
-        <h2>تعلم إدارة المشاريع باحترافية</h2>
-        <p>انضم إلى آلاف المتدربين وطور مهاراتك الآن.</p>
-        <a href="signup.html"><button>ابدأ الآن</button></a>
-    </section>
+    <div class="auth-container">
+        <!-- القسم العلوي: اسم المنصة ومميزاتها -->
+        <div class="header-section">
+            <div class="branding">
+                <i class="fas fa-project-diagram logo" aria-hidden="true"></i>
+                <h1>Blueprintly</h1>
+                <p>منصة الاحترافية في إدارة المشاريع</p>
+            </div>
+
+            <div class="features">
+                <h3>مميزات المنصة:</h3>
+                <ul>
+                    <li>دورات متخصصة معتمدة</li>
+                    <li>اختبارات محاكاة تفاعلية</li>
+                    <li>تتبع التقدم الدراسي</li>
+                    <li>دعم فني متواصل</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- قسم النماذج -->
+        <div class="forms-section">
+            <div class="form-switcher">
+                <div class="form-tab active" onclick="switchForm('login')">تسجيل الدخول</div>
+                <div class="form-tab" onclick="switchForm('register')">تسجيل جديد</div>
+            </div>
+
+            <!-- نموذج تسجيل الدخول -->
+            <form class="auth-form login-form" id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">البريد الإلكتروني</label>
+                    <input type="email" class="form-input" placeholder="example@blueprintly.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">كلمة المرور</label>
+                    <input type="password" class="form-input" placeholder="أدخل كلمة المرور" required>
+                    <i class="fas fa-eye password-toggle" onclick="togglePassword(this)" aria-label="إظهار/إخفاء كلمة المرور"></i>
+                </div>
+
+                <button type="submit" class="auth-btn">الدخول إلى المنصة</button>
+            </form>
+
+            <!-- نموذج التسجيل -->
+            <form class="auth-form register-form" id="registerForm" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label">الاسم الكامل</label>
+                    <input type="text" class="form-input" placeholder="أدخل اسمك الثلاثي" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">البريد الإلكتروني</label>
+                    <input type="email" class="form-input" placeholder="example@blueprintly.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">رقم الهاتف</label>
+                    <input type="tel" class="form-input" placeholder="أدخل رقم هاتفك" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">البلد</label>
+                    <select class="form-input" required>
+                        <option value="">اختر بلدك</option>
+                        <option value="SA">السعودية</option>
+                        <option value="EG">مصر</option>
+                        <option value="AE">الإمارات</option>
+                        <!-- يمكن إضافة المزيد من البلدان -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">نوع الحساب</label>
+                    <select class="form-input" required>
+                        <option value="">اختر نوع الحساب</option>
+                        <option value="trainee">متدرب</option>
+                        <option value="trainer">مدرب</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">كلمة المرور</label>
+                    <input type="password" class="form-input" placeholder="8 أحرف على الأقل" minlength="8" required>
+                    <i class="fas fa-eye password-toggle" onclick="togglePassword(this)" aria-label="إظهار/إخفاء كلمة المرور"></i>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">تأكيد كلمة المرور</label>
+                    <input type="password" class="form-input" placeholder="أعد إدخال كلمة المرور" required>
+                    <i class="fas fa-eye password-toggle" onclick="togglePassword(this)" aria-label="إظهار/إخفاء كلمة المرور"></i>
+                </div>
+
+                <button type="submit" class="auth-btn">إنشاء حساب جديد</button>
+            </form>
+
+            <!-- خيارات التسجيل الاجتماعي -->
+            <div class="social-auth">
+                <p>أو سجل باستخدام</p>
+                <div class="social-buttons">
+                    <button class="social-btn google">
+                        <i class="fab fa-google" aria-hidden="true"></i> Google
+                    </button>
+                    <button class="social-btn linkedin">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                    </button>
+                </div>
+            </div>
+
+            <div class="footer-note">
+                © 2024 Blueprintly. جميع الحقوق محفوظة<br>
+                تصميم وتطوير: المهندس أحمد الديب
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // تبديل النماذج
+        function switchForm(formType) {
+            const loginForm = document.querySelector('.login-form');
+            const registerForm = document.querySelector('.register-form');
+            const tabs = document.querySelectorAll('.form-tab');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            if(formType === 'login') {
+                document.querySelector(`.form-tab[onclick="switchForm('login')"]`).classList.add('active');
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+            } else {
+                document.querySelector(`.form-tab[onclick="switchForm('register')"]`).classList.add('active');
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+            }
+        }
+
+        // إظهار/إخفاء كلمة المرور
+        function togglePassword(icon) {
+            const input = icon.previousElementSibling;
+            if(input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+
+        // التحقق من تطابق كلمات المرور
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            const password = this.querySelector('input[type="password"]').value;
+            const confirmPassword = this.querySelectorAll('input[type="password"]')[1].value;
+            
+            if(password !== confirmPassword) {
+                e.preventDefault();
+                alert('كلمتا المرور غير متطابقتين!');
+            }
+        });
+    </script>
 </body>
 </html>
